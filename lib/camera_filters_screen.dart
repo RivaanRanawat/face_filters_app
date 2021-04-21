@@ -33,6 +33,10 @@ class _CameraFilterScreenState extends State<CameraFilterScreen> {
                 print(_platformVersion);
                 setState(() {});
               },
+              onImageCaptured: (path) {
+                _platformVersion = "Image save at $path";
+                setState(() {});
+              },
               androidLicenceKey:
                   "be3d0a99127f267f58da0201b278f7cea640d7833cef04c69ac95990d91f5ca472d05d47f9117f30",
             ),
@@ -41,7 +45,27 @@ class _CameraFilterScreenState extends State<CameraFilterScreen> {
               child: Container(
                 padding: EdgeInsets.all(20),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 28, right: 28),
+                      child: Expanded(
+                        child: TextButton(
+                          child: Icon(Icons.camera_enhance),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white54),
+                          ),
+                          onPressed: () {
+                            if (cameraDeepArController == null) {
+                              return;
+                            }
+                            cameraDeepArController.snapPhoto();
+                          },
+                        ),
+                      ),
+                    ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
