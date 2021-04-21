@@ -1,4 +1,4 @@
-package com.example.flutter_ar
+package com.rivaan.flutter_ar
 
 import io.flutter.embedding.android.FlutterActivity
 
